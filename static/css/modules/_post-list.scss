@@ -1,0 +1,29 @@
+.article-list.post-list {
+  display: block;
+}
+
+.page{
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $cWhite;
+  transition: opacity .2s;
+  padding: 7px 15px;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  font-size: 1em;
+  background-color: $cSub;
+  border-bottom: 2px solid $cSub;;
+
+  &:hover {
+    opacity: 0.8;
+    color: $cWhite;
+  }
+
+  &__num {
+    @extend .page;
+    background-color: $cMain;
+    border-bottom: 2px solid $cMain;
+  }
+}

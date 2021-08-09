@@ -1,0 +1,48 @@
+{% load static %}
+<div class="top-view">
+  <div class="top-view__img"></div>
+  <div class="top-blog">
+    <h2 class="top-blog__ttl">
+      News & Blog
+    </h2>
+    <div class="top-blog__list">
+      {% for blog in blogs %}
+      <div class="top-blog__container">
+        <a href="{% url 'post_detail' slug=blog.slug %}"></a>
+        <div class="top-blog__date">{{ blog.created_date|date:"Y.m.d" }}</div>
+        <div class="top-blog__title">{{ blog.title }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="top-article">
+  <h2 class="top-article__ttl">
+    Pick Up
+    <span class="top-article__sub-ttl">注目記事</span>
+  </h2>
+  <div class="top-article__container">
+    {% for top_article in top_articles %}
+    <article class="top-article__items fadeUp">
+      <a href="{% url 'post_detail' slug=top_article.slug %}"></a>
+      <div class="top-article__img">
+        {% if top_article.image %}
+        <img src="{{ top_article.image.url }}" alt="{{ top_article.title }}">
+        {% else %}
+        <img src="{% static 'images/component/list_img.jpg' %}" alt="">
+        {% endif %}
+        <div class="top-article__category">
+          <span class="icon__category">{{ top_article.category }}</span>
+        </div>
+      </div>
+      <div class="top-article__info">
+        <time class="top-article__date">
+          <span class="icon__date"> {{top_article.created_date|date:"Y.m.d"}}</span>
+        </time>
+        <h2 class="top-article__title">{{ top_article.title }}</h2>
+        <div class="article-list__text">{{ top_article.content|safe|truncatechars:100 }}</div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>

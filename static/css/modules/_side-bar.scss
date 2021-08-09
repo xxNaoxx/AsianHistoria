@@ -1,0 +1,155 @@
+/******************************************************************
+
+Stylesheet: side-barページ
+
+******************************************************************/
+#index {
+    display: none;
+}
+
+.index-list {
+    & ul {
+        counter-reset: section 0;
+        list-style: none;
+
+        & li::before {
+            counter-increment: section 1;
+            content: counters(section,"-") ". ";
+        }
+    }
+
+    & a:hover {
+        color: $cMain;
+    }
+
+    & li.is-active {
+        background-color: $cMain;
+        color: black;
+    }
+
+    & li > ul.non-active {
+        background-color: $cBase;
+        color: black;
+    }
+}
+
+.search {
+    &__container {
+        position: relative;
+        box-sizing: border-box;
+        border: 2px solid $cMain;
+        display: block;
+        padding: 3px 10px;
+        border-radius: 3px;
+        height: 2.3em;
+        overflow: hidden;
+    }
+
+    &__input {
+        position: absolute;
+        top: 0;
+        border: none;
+        height: 2.0em;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        cursor: pointer;
+        border: none;
+        background-color: $cMain;
+        color: #fff;
+        width: 3.0em;
+        height: 3.0em;
+        right: 0px;
+        top: -0.5em;
+        outline : none;
+    }
+}
+
+.side-bar {
+    width: 285px;
+    z-index: 100;
+
+    &__sticked {
+        position: sticky;
+        flex: 1;
+        top: 2.5em;
+    }
+
+    &__container {
+        margin-top: 2.5em;
+        // padding: 0px 16px 16px;
+        background: $cWhite;
+
+        &.catTop {
+            margin-top: 0em;
+        }
+
+        &:nth-last-child(1) {
+            margin-bottom: 4em;
+        }
+    }
+
+    & > &__container {
+        &:nth-of-type(4) {
+            margin-bottom: 4em;
+        }
+    }
+
+    &__ttl {
+        padding: 0.5em 1em;
+        background-color: $cMain;
+        color: $cBase;
+        text-align: center;
+    }
+
+    &__content {
+        padding: 16px 16px;
+
+        & > ul {
+        margin: 0;
+        padding: 0;
+
+            & > li > ul {
+                margin: 0;
+                padding-left: 1em;
+            }
+        }
+    }
+
+    &__ul {
+        position: relative;
+    }
+
+    &__li {
+        & > a {
+            display: block;
+            padding: .75em .5em;
+            line-height: 1.4;
+            border-bottom: $cBorder solid 1px;
+            text-decoration: none;
+            color: $cText;
+        }
+
+        &:hover {
+            background-color: $cBase;
+        }
+    }
+
+    &__tag {
+        &__ul {
+            display: flex;
+            flex-wrap:wrap;
+        }
+
+        &__li {
+            background-color: $cBase;
+            margin-right: 0.5em;
+            margin-bottom: 0.5em;
+        }
+    }
+}

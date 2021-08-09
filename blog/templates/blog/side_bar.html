@@ -1,0 +1,54 @@
+{% load static %}
+{% load boost %}
+<aside class="side-bar">
+  <div class="side-bar__container catTop">
+    <form class="search__container" method="GET" action="{% url 'search' %}">
+      <input type="text" class="search__input" placeholder="キーワード検索" name="q" value="{{request.GET.q}}">
+      <button type="submit" value="search" class="search__btn fas fa-search"></button>
+      <!-- <button type="submit" value="search" class="search__btn">検索</button> -->
+
+     </form>
+  </div>
+  <div class="side-bar__container">
+    <div class="side-bar__ttl icon__category">カテゴリー</div>
+    <div class="side-bar__content">
+      <ul class="side-bar__ul">
+        {% for cat_jpn, cat_eng in cat_jpn_list|zip:cat_eng_list %}
+        <li class="side-bar__li">
+          <a class="icon__li-arrow" href="{% url 'post_list' name=cat_eng meta='category' %}">{{ cat_jpn }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="side-bar__container">
+    <div class="side-bar__ttl icon__country">カントリー</div>
+    <div class="side-bar__content">
+      <ul class="side-bar__ul">
+        {% for ctry_jpn, ctry_eng in ctry_jpn_list|zip:ctry_eng_list %}
+        <li class="side-bar__li">
+          <a class="icon__li-arrow" href="{% url 'post_list' name=ctry_eng meta='country' %}">{{ ctry_jpn }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="side-bar__container">
+    <div class="side-bar__ttl icon__tag-L">タグ</div>
+    <div class="side-bar__content">
+      <ul class="side-bar__tag__ul">
+        {% for tag_jpn, tag_eng in tag_jpn_list|zip:tag_eng_list %}
+        <li class="side-bar__tag__li">
+          <a class="" href="{% url 'post_list' name=tag_eng meta='tag' %}">{{ tag_jpn }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="side-bar__sticked">
+    <div class="side-bar__container" id="index">
+      <div class="side-bar__ttl icon__list">目次</div>
+      <div class="side-bar__content index-list" id ="js-toc"></div>
+    </div>
+  </div>
+</aside>

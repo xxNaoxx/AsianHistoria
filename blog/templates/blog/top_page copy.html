@@ -1,0 +1,83 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load boost %}
+{% block content %}
+{% include 'blog/top_view.html' %}
+<div class="main-content">
+  <main id="js-tab" class="main-container">
+    <section class="main-list">
+      <div class="main-list__inner">
+        <ul class="main-list__ul">
+					<li class="main-list__li">
+						<div class="main-list__item is-active" data-nav="0">
+							<div class="main-list__title">一覧</div>
+						</div>
+					</li>
+					<li class="main-list__li">
+						<div class="main-list__item" data-nav="1">
+							<div class="main-list__title">歴史</div>
+						</div>
+					</li>
+					<li class="main-list__li">
+						<div class="main-list__item" data-nav="2">
+							<div class="main-list__title">思想</div>
+						</div>
+					</li>
+					<li class="main-list__li">
+						<div class="main-list__item" data-nav="3">
+							<div class="main-list__title">言語</div>
+						</div>
+					</li>
+					<li class="main-list__li">
+						<div class="main-list__item" data-nav="4">
+							<div class="main-list__title">文化</div>
+						</div>
+					</li>
+				</ul>
+      </div>
+    </section>
+		{% for all_article, cat_top in all_articles|zip:cat_top_list %}
+    <section class="article-list" data-content="{{ forloop.counter0 }}">
+			{% for article in all_article %}
+      <article class="article-list__container">
+        <a href="{% url 'post_detail' slug=article.slug %}"></a>
+        <div class="article-list__img">
+          <div class="article-list__img__inner">
+            {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}">
+            {% else %}
+            <img src="{% static 'images/component/list_img.jpg' %}" alt="">
+            {% endif %}
+          </div>
+          <div class="article-list__sub-info">
+            <div class="article-list__category">
+              <span class="icon__category">{{ article.category }}</span>
+            </div>
+            <div class="article-list__country">
+              <span class="icon__country">{{ article.country }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="article-list__info">
+          <h2 class="article-list__title">{{ article.title }}</h2>
+          <div class="article-list__text">{{ article.content|safe|truncatechars:100 }}</div>
+          <div class="article-list__meta">
+            <time class="article-list__date">
+              <span class="icon__date">{{ article.created_date|date:"Y/m/d"}}</span>
+            </time>
+          </div>
+          <div class="article-list__more">
+            記事を読む »
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+      <div class="article-list__link">
+        <a href="{% url 'post_list' name=cat_top %}">過去の記事はこちら</a>
+      </div>
+    </section>
+    {% endfor %}
+  </main>
+  {% include 'blog/side_bar.html' %}
+</div>
+{% endblock %}

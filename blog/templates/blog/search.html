@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-content">
+  <main id="js-tab" class="main-container">
+    <!-- 検索結果の数 -->
+{% if query %}
+  {% for message in messages %}
+    <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+    <span class="text-center font-weight-bold h4">{{posts_num}}件</span>
+  {% endfor %}
+{% endif%}
+    <section class="article-list post-list">
+      {% if posts %}
+			{% for post in posts %}
+      <article class="article-list__container">
+        <a href="{% url 'post_detail' slug=post.slug %}"></a>
+        <div class="article-list__img">
+          <div class="article-list__img__inner">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% else %}
+            <img src="{% static 'images/component/list_img.jpg' %}" alt="">
+            {% endif %}
+          </div>
+          <div class="article-list__sub-info">
+            <div class="article-list__category">
+              <span class="icon__category">{{ post.category }}</span>
+            </div>
+            <div class="article-list__country">
+              <span class="icon__country">{{ post.country }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="article-list__info">
+          <h2 class="article-list__title">{{ post.title }}</h2>
+          <div class="article-list__text">{{ post.content|safe|truncatechars:100 }}</div>
+          <div class="article-list__meta">
+            <time class="article-list__date">
+              <span class="icon__date">{{ post.created_date|date:"Y/m/d"}}</span>
+            </time>
+          </div>
+        </div>
+        <div class="article-list__more">
+          記事を読む »
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    <!-- 前へ の部分 -->
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="icon__pre"></a>
+    {% endif %}
+    <!-- 数字の部分 -->
+    {% for num in page_obj.paginator.page_range %}{% if page_obj.number == num %}
+      <span class="page">{{ num|cut:" "}}</span>{% else %}<a href="?page={{ num }}" class="page__num">{{ num|cut:"\n"}}</a>
+    {% endif %}{% endfor %}
+    <!-- 次へ の部分 -->
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="icon__next"></a>
+    {% endif %}
+    {% else %}
+    <p>まだ記事がありません。</p>
+    {% endif %}
+  </main>
+  {% include 'blog/side_bar.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+.hero {
+    // @extend .content-width;
+
+    overflow: hidden;
+    &__title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.swiper-slide {
+    height: 300px;
+    overflow: hidden;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+
+    }
+}
+

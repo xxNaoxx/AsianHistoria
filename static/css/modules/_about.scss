@@ -1,0 +1,80 @@
+/******************************************************************
+
+Stylesheet: aboutページ
+
+******************************************************************/
+
+.about {
+    &__view {
+        height: 400px;
+
+        &__img {
+            height: 100%;
+            background-image:url('/static/images/top/topImg.jpg');
+            background-repeat: no-repeat;
+            background-position: center -340px;
+            background-size: cover;
+        }
+    }
+
+    &__container {
+        position: relative;
+        text-align: center;
+    }
+
+    &__box {
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &::after {
+            content: "";
+            display: block;
+            background-image:url('/static/images/component/profile.jpg');
+            background-position: center center;
+            background-size: 150%;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid $cWhite;
+        }
+    }
+
+    &__img {
+        width: 250px;
+        object-fit:cover;
+        border-radius:50%;
+    }
+
+    &__info {
+        @extend .content-width;
+    }
+
+    &__inner {
+        margin-top: 4em;
+    }
+
+    &__name {
+        @extend .text-l;
+    }
+
+    &__page {
+
+        margin-bottom: 4em;
+    }
+
+    &__lang {
+
+        margin-bottom: 4em;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &__img {
+            width: 10%;
+            padding-left: 1em;
+        }
+    }
+}
+

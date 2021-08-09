@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="about__container">
+  <div class="about__view">
+    <div class="about__view__img"></div>
+  </div>
+  <div class="about__box">
+    <h1>About</h1>
+  </div>
+  <div class="about__info">
+    <div class="about__inner">
+      <div class="about__name">
+        <span>Nao</span>
+      </div>
+      <div class="about__sns">
+        <a href="https://twitter.com/Nao_kieli?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-lang="ja" data-show-count="false">Follow @Nao_kieli</a>
+      </div>
+      <div class="about__desc">
+        <h2>書いている人</h2>
+        <p>はじめまして！AsianHistoriaを運営しているNaoです。</p>
+        <p>大学時代は史学科で現代日本史の研究をしていました。</p>
+        <p>でも、昔から中国史や思想史が好きで、<br>
+          卒業後もずっと勉強したいと思っていました。</p>
+        <p>今からでも遅くない！そう決心して自由気ままに勉強することにしました。<br>
+          とはいえ忙しい社会人。何でもすぐに忘れてしまいます。</p>
+        <p>だから学習ブログを立ちあげて記録することにしました。<br>
+          それがこのAsianHistoriaです。
+        </p>
+      </div>
+      <div class="about__page">
+        <h2>このサイトについて</h2>
+        <p>AsianHistoriaはNaoの気ままな学習成果を記録した個人ブログです。</p>
+        <p>記載内容は出典を明記する等、公平・正確な記事を目指していますが<br>
+        研究者ではないので内容は保証できません。</p>
+        <p>また、AsianHistoriaはエンジニアでもないNaoが<br>
+          独学したPythonとDjangoで作成されています。</p>
+        <p>レイアウトが崩れていたり、おかしな挙動をしていたら<br>
+        Contactより知らせていただけると幸いです。</p>
+      </div>
+      <div class="about__lang">
+        <img src="{% static 'images/logo/html-5.svg' %}" alt="" class="about__lang__img">
+        <img src="{% static 'images/logo/css-3.svg' %}" alt="" class="about__lang__img">
+        <img src="{% static 'images/logo/sass.svg' %}" alt="" class="about__lang__img">
+        <img src="{% static 'images/logo/javascript.svg' %}" alt="" class="about__lang__img">
+        <img src="{% static 'images/logo/python.svg' %}" alt="" class="about__lang__img">
+        <img src="{% static 'images/logo/django.svg' %}" alt="" class="about__lang__img">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+{% endblock %}

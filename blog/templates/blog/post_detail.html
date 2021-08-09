@@ -1,0 +1,59 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load boost %}
+
+{% block content %}
+<div class="main-content">
+  <main id="js-tab" class="main-container">
+		<section class="article-detail">
+			<h1 class="article-detail__title">{{ post.title }}</h1>
+			<div class="article-detail__info">
+				{% if post.category or post.country %}
+				<ul class="article-detail__info__ul">
+					{% if post.category%}
+					<li class="article-detail__info__li catAndCty">
+						<a href="{% url 'post_list' name=cat_eng meta='category' %}"><span class="icon__category">{{ post.category }}</span></a>
+					</li>
+					{% endif %}
+					{% if post.country %}
+					<li class="article-detail__info__li catAndCty">
+						<a href="{% url 'post_list' name=ctry_eng meta='country'%}"><span class="icon__country">{{ post.country }}</span></a>
+					</li>
+					{% endif %}
+				</ul>
+				{% endif %}
+				<ul class="article-detail__info__ul">
+					<li class="article-detail__info__li">
+						<span class="icon__date">{{ post.created_date|date:"Y.m.d" }}</span>
+					</li>
+					<li class="article-detail__info__li">
+						<span class="icon__update">{{ post.updated_date|date:"Y.m.d" }}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="article-detail__img">
+				{% if post.image %}
+				<img src="{{ post.image.url }}" alt="{{ post.title }}">
+				{% else %}
+				<img src="{% static 'images/component/list_img.jpg' %}" alt="">
+				{% endif %}
+			</div>
+			<div class="article-detail__content" id="js-toc-content">
+				{{ post.content|safe }}
+			</div>
+			{% if post.tag %}
+			<div class="article-detail__tag">
+				<ul class="article-detail__info__ul">
+					{% for tag, tag_eng in post.tag.all|zip:tags_eng %}
+						<li class="article-detail__info__li tag">
+							<a href="{% url 'post_list' name=tag_eng meta='tag' %}"><span class="icon__tag-D">{{ tag }}</span></a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+		</section>
+	</main>
+  {% include 'blog/side_bar.html' %}
+</div>
+{% endblock %}

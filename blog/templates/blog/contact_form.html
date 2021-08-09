@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="contact">
+  <h1>お問い合わせフォーム</h1>
+  <p>記事への質問や、誤植等のご指摘はこちらからお願いします。</p>
+  <hr>
+  <form action="{% url 'contact_form' %}" method="post" class="contact__form">
+    {% csrf_token %}
+    <table class="contact__table">
+      <tbody>
+        <tr>
+          <th>{{ form.subject.label_tag }}</th>
+          <td>{{ form.non_field_errors }}{{ form.subject }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.name.label_tag }}</th>
+          <td>{{ form.non_field_errors }}{{ form.name }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.email.label_tag }}</th>
+          <td>{{ form.non_field_errors }}{{ form.email }}<br>{{ form.email.help_text }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.message.label_tag }}</th>
+          <td>{{ form.non_field_errors }}{{ form.message }}</td>
+        </tr>
+        <tr>
+          <td colspan="2">{{ form.check }}{{ form.non_field_errors }}{{ form.check.label_tag }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="contact__button">送信</button>
+  </form>
+</div>
+{% endblock %}

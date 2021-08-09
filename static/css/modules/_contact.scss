@@ -1,0 +1,57 @@
+/******************************************************************
+
+Stylesheet: contactページ
+
+******************************************************************/
+
+.contact {
+    @extend .content-width;
+    margin: 0 auto;
+
+    &__form {
+        margin-top: 2em;
+    }
+
+    &__table {
+        margin: 0 auto;
+
+        & th {
+            text-align: right;
+            padding-right: 2em;
+        }
+
+        & td {
+            text-align: left;
+        }
+    }
+
+    & h1 {
+        text-align: center;
+    }
+
+    & p {
+        text-align: center;
+    }
+
+    &__button {
+        display: block;
+        width: 15%;
+        margin: 2em auto;
+        text-align: center;
+        padding: 1em 0.5em;
+        border: $cMain solid 2px;
+        background-color: $cBase;
+        color: $cText;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transition: all .25s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            color: $cBase;
+            background-color: $cMain;
+
+        }
+    }
+
+
+}

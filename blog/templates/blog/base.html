@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Asian Historia" content="ページの内容を表す文章">
+	<title>Asian Historia</title>
+	<link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'css/vendors/swiper.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="icon" href="{% static 'images/component/favicon.svg' %}" type="image/svg+xml">
+</head>
+<body>
+	<div id="global-container">
+		<div id="container">
+			<div class="mobile-menu__cover"></div>
+			<div class="nav-trigger"></div>
+			<header class="header">
+				<div class="header__inner">
+					<div class="header__logo">
+						<a href="{% url 'top_page' %}"></a>
+						<img src="{% static 'images/component/logo.svg' %}" alt="Asian Historia" class="header__logo__img">
+					</div>
+				</div>
+				<div class="header__nav-container" id="js-nav-area">
+					<nav class="header__nav">
+						<ul class="header__ul">
+							<li class="header__li"><a href="{% url 'top_page' %}"><span class="header__li__ttl">Home</span></a></li>
+							<li class="header__li"><a href="{% url 'about' %}"><span class="header__li__ttl">About</span></a></li>
+							<li class="header__li"><a href="{% url 'post_list' name='all' meta='category' %}"><span class="header__li__ttl">All Articles</span></a></li>
+							<li class="header__li"><a href="{% url 'post_list' name='blog' meta='category'%}"><span class="header__li__ttl">Blogs</span></a></li>
+							<li class="header__li"><a href="{% url 'contact_form' %}"><span class="header__li__ttl">Contact</span></a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<div id="content">
+				{% block content %}
+				{% endblock %}
+				<button id="js-return-top" class="js-return-top"></button>
+			</div>
+			<footer class="footer" id="js-fot-area">
+				<div class="footer__inner">
+					<nav class="footer__nav">
+						<ul class="footer__ul">
+							<li class="footer__li"><a href="{% url 'top_page' %}"><span class="footer__li__ttl">Home</span></a></li>
+							<li class="footer__li"><a href="#"><span class="footer__li__ttl">About</span></a></li>
+							<li class="footer__li"><a href="{% url 'post_list' name='all' meta='category' %}"><span class="footer__li__ttl">All articles</span></a></li>
+						</ul>
+					</nav>
+					<div class="footer__copyright">
+						&copy; 2021 Asian Historia
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<!-- <script src="{% static 'scripts/vendors/swiper.min.js' %}"></script> -->
+	<script src="{% static 'scripts/vendors/scroll-polyfill.js' %}"></script>
+	<!-- <script src="{% static 'scripts/libs/hero-slider.js' %}"></script> -->
+	<script src="{% static 'scripts/libs/tab-UI.js' %}"></script>
+	<script src="{% static 'scripts/libs/index-maker.js' %}"></script>
+	<script src="{% static 'scripts/libs/list-maker.js' %}"></script>
+	<script src="{% static 'scripts/libs/return-top.js' %}"></script>
+	<script src="{% static 'scripts/libs/scroll-maker.js' %}"></script>
+	<script src="{% static 'scripts/libs/scroll-observer.js' %}"></script>
+	<script src="{% static 'scripts/libs/test.js' %}"></script>
+	<script src="{% static 'scripts/main.js' %}"></script>
+</body>
+</html>

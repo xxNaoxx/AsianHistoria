@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="contact">
+  <h1>送信完了</h1>
+  <p>お問い合わせが完了しました。</p>
+  <a href="{% url 'top_page' %}">
+      <p>トップ戻る</p>
+  </a>
+</div>
+{% endblock %}

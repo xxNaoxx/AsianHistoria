@@ -1,0 +1,131 @@
+/******************************************************************
+
+Stylesheet: post-dtail
+
+******************************************************************/
+
+.article-detail {
+  @extend .text-m;
+  color: $cText;
+
+  &__title {
+    color: $cText;
+    margin-top: 0;
+  }
+
+  &__info {
+    &__ul {
+      display: flex;
+      padding: 0;
+    }
+
+    &__li {
+      padding-right: 20px;
+      @extend .text-s;
+    }
+  }
+
+  &__img {
+    position: relative;
+    width: 100%;
+    padding-bottom: 50%;
+
+    & > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+  }
+
+  &__content {
+    & .detail-li {
+      position: relative;
+      padding: 0 1em;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: calc(1em * 1.6 / 2 - 3.5px);
+        left: 0;
+        width: 7px;
+        height: 7px;
+        background-color: $cMain;
+        transform: rotateZ(45deg);
+      }
+    }
+
+    & .detail-ul {
+        padding: 0 2em;
+    }
+
+    & h2 {
+      position: relative;
+      background-color: $cMain;
+      color: $cBase;
+      padding: 0.5em 1em;
+    }
+
+    & h3 {
+      padding: 4px 8px;
+      border-bottom: solid $cMain;
+    }
+
+    & blockquote {
+      position: relative;
+      padding: 10px 15px 10px 50px;
+      box-sizing: border-box;
+      font-style: italic;
+      border: solid $cMain 2px;
+      color: #464646;
+
+      &:before {
+        display: inline-block;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        content: "\f10d";
+        font-family: "Font Awesome 5 Free";
+        color: $cMain;
+        font-size: 25px;
+        line-height: 1;
+        font-weight: 900;
+      }
+    }
+  }
+
+  &__tag {
+    border-top: solid $cBorder 1px;
+    margin-top: 4em;
+  }
+}
+
+#js-toc-box {
+    width: 92%;
+    max-width: 800px;
+    margin: 4em auto;
+}
+
+.js-index {
+    &__title {
+        padding: 0.5em 1em;
+        background-color: $cMain;
+        color: #FFFFFF;
+        text-align: center;
+    }
+
+    &__ul {
+        border: $cBorder 1px solid;
+        margin-top: 0;
+        padding: 1em;
+        padding-left: 2em;
+
+        & ul {
+          padding-left: 1em;
+        }
+    }
+
+}
