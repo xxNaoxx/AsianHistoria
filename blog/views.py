@@ -91,6 +91,8 @@ def post_list(request, name, meta):
     else:
         name = name
 
+    # posts = []
+
     if name in cat_all_list:
         if name == 'all':
             posts = Post.objects.filter(is_public = True).exclude(category__name = '日常ブログ').order_by('created_date').reverse()
@@ -102,12 +104,12 @@ def post_list(request, name, meta):
         ctry_name = Country.objects.get(english_name = name).name
         posts = Post.objects.filter(is_public = True, country__name = ctry_name).order_by('created_date').reverse()
         meta = 'country'
-
     elif name in tag_eng_list:
         tag_name = Tag.objects.get(english_name = name).name
         posts = Post.objects.filter(is_public = True, tag__name = tag_name).order_by('created_date').reverse()
         meta = 'tag'
     else:
+        # pass
         posts = []
 
     page_obj = paginate_queryset(request, posts, 3)
