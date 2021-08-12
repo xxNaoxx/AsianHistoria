@@ -674,6 +674,40 @@ Stylesheet: スニペット
   padding: 0 0.5em;
 }
 
+.navHover {
+  position: relative;
+}
+
+.navHover::before, .navHover::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: white;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.navHover::before {
+  top: 0px;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
+.navHover::after {
+  bottom: 0px;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+}
+
+.navHover:hover::before, .navHover:hover:after {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
 /******************************************************************
 
 Stylesheet: ベーススタイル
@@ -772,6 +806,7 @@ a {
 }
 
 .header__li > a {
+  position: relative;
   text-decoration: none !important;
   padding: 12px 16px;
 }
@@ -1030,10 +1065,10 @@ Stylesheet: トップページ
   content: '';
   display: block;
   position: absolute;
-  top: -60px;
+  top: -0px;
   left: -400px;
-  width: 80%;
-  height: 80%;
+  width: 600px;
+  height: 600px;
   background-image: url("/static/images/component/169190.png");
   background-size: contain;
   background-repeat: no-repeat;
